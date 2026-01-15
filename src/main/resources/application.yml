@@ -4,11 +4,17 @@ server:
 spring:
   application:
     name: config-server
-
   cloud:
     config:
       server:
         git:
           uri: https://github.com/amitkumarmangal/config-repo
           default-label: main
-          clone-on-start: true
+logging:
+  level:
+    org.springframework.cloud: DEBUG #TRACE for detailed logs
+management:
+  endpoints:
+    web:
+      exposure:
+        include: env, health, configprops
