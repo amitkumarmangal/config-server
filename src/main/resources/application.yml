@@ -10,11 +10,30 @@ spring:
         git:
           uri: https://github.com/amitkumarmangal/config-repo
           default-label: main
-logging:
-  level:
-    org.springframework.cloud: DEBUG #TRACE for detailed logs
+
+endpoints:
+  health:
+    sensitive: true
+
 management:
+  security:
+    enabled: false
+  endpoint:
+    gateway:
+      access: unrestricted
+    health:
+      show-details: always
+      show-components: always
+      probes:
+        enabled: true
   endpoints:
     web:
       exposure:
         include: prometheus, metrics, info, health, shutdown, beans, env, configprops, gateway
+
+logging:
+  file:
+    path: c:/logs
+    name: central-log
+  request-response:
+    enabled: true
